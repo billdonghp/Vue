@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="vue.js">
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			{{message}}  --  {{createdatetime}}
+			
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: "#app",
+				data :{
+					message: "Hello World",
+					createdatetime : new Date().toLocaleTimeString()
+				},
+				watch:{
+					message : function(newVal, oldVal){
+						console.log(newVal + "<--" +oldVal);
+					}
+				}
+			})
+			app.$watch('createdatetime' , function(newVal, oldVal){
+					console.log(oldVal);
+				}
+			)
+			app.$data.message = "new Message";
+			app.$data.createdatetime = new Date().toLocaleDateString();
+		</script>
+	</body>
+</html>

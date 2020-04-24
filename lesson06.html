@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="vue.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<!-- 条件 -->
+			<p v-if="sean">你看到我了吧</p>
+			<!-- 循环 -->
+			<li v-for="book in books">
+				<div v-if="book.qty > 0">
+					{{book.text}}
+				</div>
+				<div v-else>
+					{{book.qty}}
+				</div>
+				
+			</li>
+			<li v-for="book in books">
+				<div v-show="book.qty > 0">
+					{{book.text}}
+				</div>
+			</li>
+		</div>
+		
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					sean : false,
+					books: [{text:'Vue',qty:1},{text:'JavaScript',qty:2},{text:'Python',qty:0}]
+				}
+			})
+			//app.$data.sean= true
+		</script>
+	</body>
+</html>

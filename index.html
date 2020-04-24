@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script src="vue.js" type="text/javascript"></script>
+		
+	</head>
+	<body>
+		
+		<div id="app">
+			{{message}}  --  {{dd}}
+		</div>
+		<script>
+			var ve = new Vue({
+				el:"#app",
+				data:{
+					message : "hello world",
+					dd:"2020-04-22"
+				},
+				watch:{
+					dd:function(newVal,oldVal){
+						console.log(newVal + "---" +oldVal);
+					},
+					message:function(newVal,oldVal){
+						console.log(newVal + "---" +oldVal);
+					}
+				}
+			})
+			ve.$data.dd = "1990-01-01"
+			ve.$data.message = "new Message!"
+			
+		</script>
+	</body>
+</html>

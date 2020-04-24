@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<script type="text/javascript" src="vue.js">
+			
+		</script>
+	</head>
+	<body>
+		<div id="app">
+			<div :class=[{'active':isActive},{'red':isRed}]>
+				{{msg}}
+			</div>
+			<div :class="classObject">
+				Computed reverse: {{reverseMessage}}
+			</div>
+		</div>
+		<script type="text/javascript">
+			var app = new Vue({
+				el: '#app',
+				data: {
+					isActive: true,
+					isRed: true,
+					red: 'red',
+					blue: 'blue',
+					msg: '天下无双',
+					
+				},
+				watch:{
+					msg:function(newVal, oldVal){
+						console.log('newValue:' + newVal);
+						console.log('oldValue:' + oldVal);
+					}
+				},
+				computed: {
+					reverseMessage:function(){
+						return this.msg.split('').reverse().join('')
+					},
+					classObject:function(){
+						return this.isActive ? 'red' : 'blue'
+					}
+				}
+			})
+		</script>
+		<style type="text/css">
+			.active{
+				font-size: 20px;
+				font-style: italic;
+			}
+			.blue{
+				color:blue;
+			}
+			.red{
+				color: red;
+			}
+		</style>
+	</body>
+</html>
