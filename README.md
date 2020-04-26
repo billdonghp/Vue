@@ -21,7 +21,9 @@ git checkout [filename] 恢复单个文件
 git reset HEAD^
 
 
-git pull origin master --
+git pull origin master 
+
+git pull --allow-unrelated-histories
 
 
 vue-devtools 安装
