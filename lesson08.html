@@ -28,16 +28,16 @@
 					
 				},
 				watch:{
-					msg:function(newVal, oldVal){
-						console.log('newValue:' + newVal);
-						console.log('oldValue:' + oldVal);
+					msg(newVal, oldVal){ 
+						//var result = newVal => newVal.split('').reverse().join('');
+						console.log("result:" +newVal)
 					}
 				},
 				computed: {
-					reverseMessage:function(){
-						return this.msg.split('').reverse().join('')
+					reverseMessage:function() {
+						return this.msg.split('').reverse().join('');
 					},
-					classObject:function(){
+					classObject: function(){
 						return this.isActive ? 'red' : 'blue'
 					}
 				}
