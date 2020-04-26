@@ -10,17 +10,34 @@
 		
 		<div id="app">
 			{{message}}  --  {{dd}}
+			<div id="">
+				<label for="c">{{msg}}</label>
+				<input type="text" name="" id="c" v-model="msg"/>
+				
+			</div>
+			<div id="">
+				<label for='btn'>label标签的作用</label>
+				<button id='btn' @click='clickFn'>点击弹窗</button>
+				
+			</div>
 		</div>
 		<script>
 			var ve = new Vue({
 				el:"#app",
 				data:{
 					message : "hello world",
-					dd:"2020-04-22"
+					dd:"2020-04-22",
+					msg:''
+				},
+				methods:{
+					clickFn(){
+						this.msg = 'clickFn'
+					}
 				},
 				watch:{
 					dd:function(newVal,oldVal){
 						console.log(newVal + "---" +oldVal);
+						
 					},
 					message:function(newVal,oldVal){
 						console.log(newVal + "---" +oldVal);
@@ -29,6 +46,7 @@
 			})
 			ve.$data.dd = "1990-01-01"
 			ve.$data.message = "new Message!"
+			
 			
 		</script>
 	</body>
