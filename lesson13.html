@@ -1,5 +1,37 @@
-git checkout -b v2
+git clone   XXX
 
-git push origin v2
+cd "path"
 
+git branch   //查看分支
 
+git branch -a //查看所有branch
+
+touch lesson14.html
+
+git add .
+
+git commit -m "init commit"
+
+git push origin master
+
+//在v2分支进行开发
+
+git checkout -b v2  //= git branch v2   + git checkout v2
+
+git branch -d dev //删除dev分支
+
+git push origin v2  //生成一个新的remote/origin/v2
+
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 12 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 331 bytes | 331.00 KiB/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+remote: 
+remote: Create a pull request for 'v2' on GitHub by visiting:
+remote:      https://github.com/billdonghp/Vue/pull/new/v2
+remote: 
+To https://github.com/billdonghp/Vue.git
+ * [new branch]      v2 -> v2
