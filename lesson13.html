@@ -35,3 +35,20 @@ remote:      https://github.com/billdonghp/Vue/pull/new/v2
 remote: 
 To https://github.com/billdonghp/Vue.git
  * [new branch]      v2 -> v2
+
+
+git checkout dev  //切换到dev分支
+
+git merge v2  //使用v2分支合并到dev
+
+git branch -d v2  //删除本地v2分支
+
+git push origin :v2  //删除github上v2分支
+
+git reset --hard head^   //回退上次提交的内容
+
+git log
+
+git reflog   //查看日志
+
+git reset --hard HEAD@{1}  //回退指定的分支
