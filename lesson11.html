@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title></title>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="app">
+		<div id="tree" :class="{watering:status}"></div>
+		<div id="tree-health">
+			<div :style="{width: health+'%'}"></div>
+		</div>
+		<div id="control">
+			<button @click="watering" v-show="!status">浇水</button>
+			<button @click="reset">重置</button>
+		</div>
+		
+	</div>
+	<script>
+		new Vue({
+			el:'#app',
+			data (){
+				return {
+					health:0,
+					status:false
+				}
+			},
+			methods:{
+				watering(){
+					this.health += 10;
+					if(this.health ===100){
+						this.status = true
+					}
+				},
+				reset(){
+					this.health = 0
+					this.status = false
+				}
+			}
+		})
+	</script>
+	<style>
+		#tree{
+			width: 300px;
+			height: 700px;
+			margin: 0 auto;
+			background: url(WechatIMG1.jpeg) center no-repeat;
+			background-size: 80%;
+		}
+		#tree.watering{
+			background: url(WechatIMG2.jpeg) center no-repeat;
+			background-size: 80%;
+		}
+		#tree-health{
+			width: 200px;
+			border: 2px solid #000;
+			margin:0 auto 20px auto;
+		}
+		#tree-health div{
+			height:10px;
+			background-color: crimson;
+		}
+		#control{
+			width:120px;
+			margin:0 auto 20px auto;
+		}
+	</style>
+	
+</body>
+</html>
