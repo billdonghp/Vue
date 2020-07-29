@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div id="tree" :class="{watering: !status}"></div>
+
+        <div id="tree_process">
+            <div :style="{width:process+'%'}"></div>
+        </div>
+
+        <div id="controls">
+            <button @click="watering" v-show="status">浇水</button>
+            <button @click="reset">重置</button>
+        </div>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data(){
+                return{
+                    process: 40,
+                    status:true
+                }
+            },
+            methods:{
+                watering(){
+                    this.process += 10;
+                    if(this.process === 100){
+                        this.status =false
+                    }
+                },
+                reset(){
+                    this.process = 0
+                    this.status = true
+                }
+            }
+        })
+    </script>
+
+    <style>
+        #tree {
+            width:200px;
+            height:300px;
+            background: url(tree.jpg) center no-repeat;
+            margin: 0 auto;
+            background-size: 80%;
+        }
+        #tree.watering {
+            background: url(tree_flower.jpg) center no-repeat;
+            background-size: 80%;
+        }
+        #tree_process{
+            width:200px;
+            border:2px crimson solid;
+            border-radius: 8px;
+            margin: 0 auto 20px auto;
+        }
+        #tree_process div{
+            background: crimson;
+            height:12px;
+        }
+        #controls{
+            width:120px;
+            margin:0 auto 20px auto
+        }
+
+
+    </style>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button-cpnt @get-count="getCount" title="button1" :desc="desc"></button-cpnt>
+        <button-cpnt title="button2"></button-cpnt>
+        {{comCount}}
+        <ulli><p>结果集：</p></ulli>
+        
+    </div>
+    <script>
+        Vue.component('button-cpnt',{
+            template: `<button @click="clickCount">{{title}} {{name}} {{btncount}} {{desc}}</button>`,
+            props:['title','desc'],
+            data (){
+                return {
+                    btncount: 0,
+                    name:'点击'
+                }
+            },
+            methods:{
+                clickCount(){
+                    this.btncount ++;
+                    this.$emit('get-count',this.$data)
+                }
+            }
+        })
+        Vue.component('ulli',{
+            template:`
+            <div>    
+                <ul>
+                    <li :class="{li:current === index}" 
+                        @click="clickFn(index)" 
+                        v-for="(item,index) in chars" 
+                        :key="index">{{item}}</li>
+                </ul>
+                <button @click="addFn">添加</button>
+                <slot></slot>
+                <ul>
+                    <li v-for="(item,index) in result" 
+                        :key="index">{{item}}</li>
+                </ul>
+            </div>
+            `,
+            data(){
+                return{
+                    chars:[1,2,3,4,5,6,7],
+                    current:'',
+                    result:[]
+                }
+            },
+            methods:{
+                clickFn(index){
+                    this.current = index
+                },
+                addFn(){
+                    if(this.current !== ''){
+                        this.result.push(this.chars[this.current])
+                    }
+                    this.current = ''
+                }
+            }
+        })
+        new Vue({
+            el:'#app',
+            data(){
+                return {
+                    desc : '次',
+                    count: 0
+                }
+            },
+            methods:{
+                getCount(data){
+                    //console.log(data)
+                    this.count = data.btncount
+                }
+            },
+            computed:{
+                comCount(){
+                    return `Button回传count: ${this.count} ${this.desc}`
+                }
+            }
+        })
+    </script>
+    <style>
+        li{
+            list-style: none;
+        }
+        .li{
+            background:crimson;
+            width:100px;
+        }
+    </style>
+</body>
+</html>

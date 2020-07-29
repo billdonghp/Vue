@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{name}} , {{qq}}
+        <p>{{count + 1}}</p>
+        <p>{{greet1()}}</p>
+        <button v-on:click.once="add">add</button>
+        <button @click="substract">substract</button>
+        <button v-on:dblclick="add">add</button>
+        <button @dblclick="substract">substract</button>
+        <a @click.prevent="beforeL" v-bind:href="website">百度</a>
+        <p>{{count}}</p>
+        <div class="canvas" @mousemove="updateXY">
+            {{x}}, {{y}}
+        </div>
+        <input type="text" :value="name"> <input type="text" v-bind:value="name">
+        <div v-html="websitTag"></div>
+        <p>{{addToB}}</p>
+    </div>
+    <script>
+        var app = new Vue({
+            el: "#app",
+            data(){
+                return {
+                    name: 'guoqian',
+                    qq: '12345',
+                    count: 0,
+                    x:0,
+                    y:0,
+                    website:'http://www.baidu.com',
+                    websitTag:'<span style="color:red;">Tag</span>'
+                }
+            },
+            computed:{
+                addToB(){
+                    return `computed: ${this.count + this.x}`
+                }
+            },
+            methods:{
+                // greet: function(){
+                //     return "我的QQ: " + this.qq
+                // },
+                greet1(){
+                    //return "我的QQ----: " + this.qq
+                    return `我的QQ: ${this.qq}`
+                },
+                add(){
+                    console.log("add")
+                    return this.count ++
+                },
+                substract(){
+                    console.log("substract")
+                    this.count --
+                },
+                updateXY(event){
+                    //console.log(event)
+                    this.x = event.offsetX
+                    this.y = event.offsetY
+                },
+                beforeL(){
+                    alert("before")
+                }
+            }
+        })
+    </script>
+    <style>
+        .canvas{
+            width:600px;
+            padding: 20px 20px;
+            text-align: center;
+            border:1px solid #333
+
+        }
+    </style>
+    
+</body>
+</html>

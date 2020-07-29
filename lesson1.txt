@@ -1,0 +1,25 @@
+1.methods
+	es5、es6
+	`${this.name}`
+2.v-on
+	click
+	dblclick
+	mousemove
+	event.offsetX
+	canvas{
+		width: 600px
+		padding: 20px 20px;
+		text-align: center;
+		border: 1px solid #333
+	}
+	事件修饰符
+	prevent、once
+3.v-bind
+	name
+	title
+4.watch 
+5.computed与methods差异比较
+	methods每个方法同时执行 需要加()
+	computed 不用加()、方法中必须有RETURN
+6.v-model 双向数据绑定
+	修饰符lazy、number、trim

@@ -1,0 +1,82 @@
+v-model  lazy  number  trim
+v-ref
+:class  :style
+    1.属性绑定
+    2.computed
+v-if  v-else-if v-else
+v-for
+    1.ul>li
+    2.template>p+span
+    3.label + radio
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#tree{
+            width:200px;
+            height:300px;
+            margin:0 auto;
+            background:url(tree.jpg) center no-repeat;
+            background-size: 80%;
+        }
+        #tree.flower{
+            background:url(tree_flower.jpg) center no-repeat;
+            background-size: 80%;
+        }
+        #tree-process{
+            width:200px;
+            border:crimson 2px solid;
+            margin:0 auto 20px auto;
+            border-radius: 8px;
+        }
+        #tree-process div{
+            height:12px;
+            background-color:crimson;
+            border-radius: 5px;
+        }
+        #controls{
+            width:120px;
+            margin:0 auto 20px auto;
+        }
+        span{
+            background:green;
+            color:#fff;
+            padding: 10px;
+            margin:10px 0;
+            display: inline-block;
+        }
+        .changeColor span{
+            background:red
+        }
+        .changeLength span:after{
+            content:'手机号码';
+            margin-left:10px
+        }

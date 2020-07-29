@@ -1,0 +1,116 @@
+多vue实例
+component：全局注册、局部注册
+props
+slot
+
+node\npm 安装
+@vue/cli
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div id="app">
+        <button-cpnt title="button1" :kindex="kindex"></button-cpnt>
+        <button-cpnt title="button2"></button-cpnt>
+        <ulli><p>结果集：</p></ulli>
+        
+    </div>
+    <script>
+        Vue.component('button-cpnt',{
+            template: `<button @click="count ++">{{title}} {{name}} {{count}} {{kindex}}</button>`,
+            props:['title','kindex'],
+            data (){
+                return {
+                    count: 0,
+                    name:'点击'
+                }
+            },
+            methods:{
+                clickCount(){
+                    this.count ++
+                }
+            }
+        })
+        Vue.component('ulli',{
+            template:`
+            <div>    
+                <ul>
+                    <li :class="{li:current === index}" 
+                        @click="clickFn(index)" 
+                        v-for="(item,index) in chars" 
+                        :key="index">{{item}}</li>
+                </ul>
+                <button @click="addFn">添加</button>
+                <slot></slot>
+                <ul>
+                    <li v-for="(item,index) in result" 
+                    :key="index">{{item}}</li>
+                </ul>
+            </div>
+            `,
+            data(){
+                return{
+                    chars:[1,2,3,4,5,6,7],
+                    current:'',
+                    result:[]
+                }
+            },
+            methods:{
+                clickFn(index){
+                    this.current = index
+                },
+                addFn(){
+                    if(this.current !== ''){
+                        this.result.push(this.chars[this.current])
+                    }
+                    this.current = ''
+                }
+            }
+        })
+        new Vue({
+            el:'#app',
+            data(){
+                return {
+                    kindex : 22
+                }
+            }
+        })
+    </script>
+    <style>
+        li{
+            list-style: none;
+        }
+        .li{
+            background:crimson;
+            width:100px;
+        }
+    </style>

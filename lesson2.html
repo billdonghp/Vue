@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <button @click="nameFocus()">focus</button>
+        姓名<input type="text" v-model="name" ref="name">{{name}}
+        年龄<input type="text" v-model="age" ref="age">{{age}}
+        <ul>
+            <li v-for="(char,index) in chars">{{index}}--{{char}}</li>
+        </ul>
+        <!-- <div v-for="(char,index) in chars" >
+            <p>{{char}}</p>
+        </div> -->
+        <!-- <template v-for="(char,index) in chars" >
+            <p>{{char}}</p>
+        </template> -->
+        <template v-for="user in users">
+            <div v-for="(val,key) in user">
+                <p>{{key}}:{{val}}</p>
+            </div>
+        </template>
+        <!-- v-if  v-else-if v-else v-show -->
+        <button @click="error= !error">error</button>
+        <button @click="success= !success">success</button>
+        <div v-if="error">error true 显示</div>
+        <!-- <div v-else-if="success">success true 显示</div>
+        <div v-else>other 显示</div> -->
+        <div v-show="error">show显示</div>
+        <!-- class style -->
+        <button @click="changeColor = !changeColor" >changeColor</button>
+        <button @click="changeLength= !changeLength">changeLength</button>
+        <div :class="{changeColor: changeColor,changeLength: changeLength}"><span>hello</span></div>
+        <p :style="{fontSize:fontSize+'px'}">style绑定</p>
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data(){
+                return {
+                    name:'',
+                    error: true,
+                    success:true,
+                    changeColor:false,
+                    changeLength:false,
+                    fontSize:30,
+                    age: 30,
+                    chars:['a','b','c','d'],
+                    users:[{name:'z3',age:20},{name:'l4',age:30},{name:'w5',age:35}]
+
+                }
+            },
+            methods:{
+                setName(){
+
+                },
+                nameFocus(){
+                    this.$refs.name.focus()
+                    this.$refs.age.value=34
+
+                }
+            }
+
+        })
+    </script>
+    <style>
+        span{
+            background:green;
+            padding:10px;
+            margin:10px 0;
+            color:#fff;
+            display:inline-block
+        }
+        .changeColor span{
+            background: red;
+        }
+        .changeLength span:after{
+            content:"vue";
+            margin-left:10px
+        }
+    </style>
+</body>
+</html>
